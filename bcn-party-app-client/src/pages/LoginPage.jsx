@@ -23,7 +23,7 @@ const LoginPage = () => {
                 // store the token in localStorage
                 storeToken(tokenObject.authToken)
                 authenticateUser()
-                navigate("/profile")
+                .then(() => navigate("/profile"))
             } )
             .catch(err => console.error(err))
     }

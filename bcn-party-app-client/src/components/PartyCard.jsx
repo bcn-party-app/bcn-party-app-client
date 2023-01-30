@@ -1,10 +1,24 @@
-import { Link } from "react-router-dom"
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom"
+import { useParams } from "react";
+import { useContext } from "react";
+import { OwnerContext } from "../context/owner.context";
+
 
 const PartyCard = (props) => {
     const {name, club, date, musicGenre, image, attendees} = props;
     // const [attendees, setAttendees] = useState([]);
+    const {partyId} = useParams;
+    const navigate = useNavigate();
+    const value = useContext(OwnerContext)
 
+    const deleteParty = () => {
+        //make a DELETE request to delete the Party
+        axios.delete(`${process.env.REACT_APP_API_URL}/api/party/${partyId}`)
+    // Once the delete request is resolved successfully, navigate back to the list of parties
+        .then(() => navigate("/party"))
+        .catch((err) => console.log(err));
+    };
+    
     return (
         <div className="PartyCard">
             <h3>{name}</h3>
@@ -25,10 +39,16 @@ const PartyCard = (props) => {
             })}
             </ul>
             {/* this button needs to toggle between attend/don't attend and needs to make a call to the routes in the backend*/}
+{/*  */}
             <button>Attend</button>
-            {/* these buttons need to be rendered only if current user is the user who created that party, and then make a request to the specific  */}
-            <button>Edit this party</button>
-            <button>Delete this party</button>
+
+            {/* the edit/delete buttons below need to be rendered only if current user is the user who created that party, and then make a request to the specific API  */}
+
+            <Link to={`/party/${partyId}`}>
+                <button>Edit this party</button>
+            </Link>
+            
+            <button onClick={deleteParty}>Delete this party</button>
         </div>
     );
 }

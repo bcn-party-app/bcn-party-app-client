@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom"
-import { useState, useContext } from "react";
-import axios from "axios";
+import { useContext } from "react";
+
 import { AuthContext } from "../context/auth.context";
 
 const HomePage = props => {
     
-    const { user, setUser, isLoggedIn, logOutUser } = useContext(AuthContext);
+    const { isLoggedIn } = useContext(AuthContext);
     
       
   return (

@@ -22,15 +22,24 @@ function AddParty(props) {
     // req.body to .create() method when creating a new movie in '/api/movies' POST route
     uploadData.append("image", e.target.files[0]);
  
-    service
-      .uploadImage(uploadData)
-      .then(response => {
-        // console.log("response is: ", response);
-        // response carries "fileUrl" which we can use to update the state
-        setImage(response.fileUrl);
-      })
-      .catch(err => console.log("Error while uploading the file: ", err));
-  };
+//     service
+//       .uploadImage(uploadData)
+//       .then(response => {
+//         // console.log("response is: ", response);
+//         // response carries "fileUrl" which we can use to update the state
+//         setImage(response.fileUrl);
+//       })
+//       .catch(err => console.log("Error while uploading the file: ", err));
+//   };
+    axios.post(`${process.env.REACT_APP_API_URL}/api/upload`, uploadData)
+          .then(response => {
+            // console.log("response is: ", response);
+            // response carries "fileUrl" which we can use to update the state
+            setImage(response.data.image);
+          })
+          .catch(err => console.log("Error while uploading the file: ", err));
+      };
+
  
   const handleSubmit = (e) => {
     e.preventDefault();

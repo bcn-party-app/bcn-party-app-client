@@ -22,9 +22,10 @@ const LoginPage = () => {
             .then((tokenObject) =>{
                 // store the token in localStorage
                 storeToken(tokenObject.authToken)
-                authenticateUser()
-                navigate("/profile")
+                return authenticateUser()
+                
             } )
+            .then(() => navigate("/profile"))
             .catch(err => console.error(err))
     }
   return (

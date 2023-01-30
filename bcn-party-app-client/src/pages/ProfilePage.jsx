@@ -47,10 +47,7 @@ const ProfilePage = props => {
             <p>{user?.name}</p>
           
         </div>
-        
-
-        
-            <div className="homeRightSection">
+             <div className="homeRightSection">
                 <div>
                     {user && 
                     user.image ? 

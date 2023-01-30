@@ -22,6 +22,7 @@ const LoginPage = () => {
             .then((tokenObject) =>{
                 // store the token in localStorage
                 storeToken(tokenObject.authToken)
+
                 return authenticateUser()
                 
             } )

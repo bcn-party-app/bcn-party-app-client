@@ -18,7 +18,7 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='/login' element={<IsAnon><LoginPage /></IsAnon>} />
         <Route path='/signup' element={<IsAnon><SignupPage /></IsAnon>}/>
-        <Route path='/profile' element={<ProfilePage />} />
+        <Route path='/profile' element={<IsPrivate><ProfilePage /></IsPrivate>} />
         <Route path='/party' element={ <IsPrivate><PartyListPage /></IsPrivate>} />
         <Route path='/party/:partyId' element={<IsPrivate><EditPartyPage /></IsPrivate>} />
       </Routes>

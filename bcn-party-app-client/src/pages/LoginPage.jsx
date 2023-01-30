@@ -23,7 +23,7 @@ const LoginPage = () => {
                 // store the token in localStorage
                 storeToken(tokenObject.authToken)
                 authenticateUser()
-                navigate("/")
+                navigate("/profile")
             } )
             .catch(err => console.error(err))
     }
@@ -36,19 +36,20 @@ const LoginPage = () => {
                     <h1>Login</h1> 
                     <label>Email</label>
                     <br />
-                    <input type="text" name="username" value={user.email} onChange={handleChange} />
+                    <input type="text" name="email" value={user.email} onChange={handleChange} />
                     <br />
                     <label>Password</label>
                     <br />
                     <input type="password" name="password" value={user.password}  onChange={handleChange} />
                     <br />
-                    <p>Don't have an account yet? you can create your account <Link to={'/signup'}>here</Link> </p>
+                    
                 </div>
 
                 <div className="loginRightSection">
-                
+                <button type="submit"><b>Login</b></button>
                 </div>    
             </form>
+            <p>Don't have an account yet? you can create your account <Link to={'/signup'}>here</Link> </p>
         </div>
     </div>
 </div>

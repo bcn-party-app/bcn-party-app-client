@@ -30,23 +30,26 @@ const SignUpPage = () => {
                         <h1>Sign up</h1> 
                         <label>Name</label>
                         <br />
-                        <input type="text" name="username" value={user.name} onChange={handleChange} />
+                        <input type="text" name="name" value={user.name} onChange={handleChange} />
                         <br />
                         <label>Email</label>
                         <br />
-                        <input type="text" name="campus" value={user.email}  onChange={handleChange} />
+                        <input type="text" name="email" value={user.email}  onChange={handleChange} />
                         <br />
                         <label>Password</label>
                         <br />
                         <input type="password" name="password" value={user.password}  onChange={handleChange} />
-                        <div className="x">
+
+                        <div className="signUpRightSection">
+                             <button type="submit"><b>Create account</b></button>
+                          </div>
+                    </div>
+                </form>
+                <div className="x">
                           <p>Already have an account?</p>
                           <Link to={"/login"}> Login</Link>
                         </div> 
-                    </div>
-
-                       
-                </form>
+                    
             </div>
         </div>
     </div>

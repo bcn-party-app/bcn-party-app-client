@@ -38,14 +38,13 @@ button:hover {
 }
 
 button[type="submit"] {
-  background-color: lightgrey;
+  background-color: #bedee3;
 }
 
 input {
   margin-bottom: 12px;
-  background-color: lightgrey;
-  border-radius: 2px;
-  border-color: lightgrey;
+  border-radius: 10px;
+  border-color: none;
 }
 
 .homePageContainer, .signUpContainer, .loginContainer{
@@ -59,7 +58,6 @@ input {
   width: 60vw;
   height: 50vh;
   display: flex;
-  background-image: lightgrey;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -96,7 +94,7 @@ input {
 }
 
 .field {
-  color: lightgrey;
+
 }
 
 .logOutButton {

@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useParams } from "react";
 import { useContext } from "react";
-import { OwnerContext } from "../context/owner.context";
 import { AuthContext } from "../context/auth.context";
 
 
@@ -28,6 +27,7 @@ const PartyCard = (props) => {
             <img src={image} alt="partyImage" />
             <p>Date: {date}</p>
             <p>Music genre: {musicGenre}</p>
+            <p>Party host: {owner}</p>
             <h5>Attendees: <span>{attendees.length}</span></h5>
             <ul>
             {attendees.map((attendee) => {

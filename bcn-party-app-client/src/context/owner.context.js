@@ -1,17 +1,16 @@
-import { createContext } from "react";
-import Party from "../../../../bcn-party-app-server/models/Party.model";
+import { createContext, useContext } from "react";
+import { AuthContext } from "./auth.context";
 
 const OwnerContext = createContext();
 
 function OwnerProviderWrapper(props) {
     const [isOwner, setIsOwner] = useState(false)
-    const
     //how do we grab 1) logged in user and 2) current party?
-    const showIfOwner = () => {
-    //if logged in User is owner of the party, allow them to delete/edit party
-    
-    
-        if (req.payload._id === party.owner) {
+    const { user } = useContext(AuthContext)
+
+    const toggleIfOwner = () => {
+    //creating a fn that can be used to update isOwner, by toggling the value between "false" and "true"
+        if (user._id === party.owner) {
             setIsOwner(true);
         } else {
             setIsOwner(false);
@@ -19,13 +18,13 @@ function OwnerProviderWrapper(props) {
     };
 
     return (
-        <OwnerProviderWrapper value={{isOwner, showIfOwner}}>
+        <OwnerProviderWrapper value={{isOwner, toggleIfOwner}}>
             {props.children}
         </OwnerProviderWrapper>
     )
 } 
 
-export {OwnerContext};
+export {OwnerContext, OwnerProviderWrapper};
 
 //TO DO:
 //wrap around PartyCard component

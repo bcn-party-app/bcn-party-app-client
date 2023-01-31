@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 import { AuthContext } from "./auth.context";
 
 const OwnerContext = createContext();
@@ -6,7 +6,7 @@ const OwnerContext = createContext();
 function OwnerProviderWrapper(props) {
     const [isOwner, setIsOwner] = useState(false)
     //how do we grab 1) logged in user and 2) current party?
-    const { user } = useContext(AuthContext)
+    const { user, party } = useContext(AuthContext)
 
     const toggleIfOwner = () => {
     //creating a fn that can be used to update isOwner, by toggling the value between "false" and "true"

@@ -8,6 +8,7 @@ function ClubCard ( { name, streetName, streetNumber, image } ) {
       <h1>{name}</h1>
       <p>{streetName},{streetNumber}</p>
       <img className="img-card" src={image} alt={image} />
+      
     </div>
   );
 }

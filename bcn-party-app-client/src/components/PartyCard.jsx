@@ -1,7 +1,10 @@
 import { Link, useNavigate } from "react-router-dom"
+
 import { useParams } from "react";
 import { useContext } from "react";
+
 import { AuthContext } from "../context/auth.context";
+import axios from "axios";
 
 
 const PartyCard = (props) => {

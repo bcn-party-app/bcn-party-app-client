@@ -2,15 +2,16 @@ import { Link, useNavigate } from "react-router-dom"
 import { useParams } from "react";
 import { useContext } from "react";
 import { OwnerContext } from "../context/owner.context";
+import { AuthContext } from "../context/auth.context";
 
 
 const PartyCard = (props) => {
-    const {name, club, date, musicGenre, image, attendees} = props;
+    const {name, club, date, musicGenre, image, attendees, owner} = props;
     // const [attendees, setAttendees] = useState([]);
     const {partyId} = useParams;
     const navigate = useNavigate();
     //updating the consumer component PartyCard so it can properly access the isOwner value from OwnerContext.Provider
-    const {isOwner} = useContext(OwnerContext)
+    const {user} = useContext(AuthContext);  //can access id of curr logged in user
 
     const deleteParty = () => {
         //make a DELETE request to delete the Party
@@ -44,12 +45,18 @@ const PartyCard = (props) => {
             <button>Attend</button>
 
             {/* the edit/delete buttons below need to be rendered only if current user is the user who created that party, and then make a request to the specific API  */}
+            {   
+                user._id === owner &&
+                <>
+                <Link to={`/party/${partyId}/edit`}>
+                    <button>Edit this party</button>
+                </Link>
 
-            <Link to={`/party/${partyId}`}>
-                <button>Edit this party</button>
-            </Link>
-            
-            <button onClick={deleteParty}>Delete this party</button>
+                <button onClick={deleteParty}>Delete this party</button>
+                </>
+            }
+
+        
         </div>
     );
 }

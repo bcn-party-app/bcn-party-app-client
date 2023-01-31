@@ -5,9 +5,9 @@ function ClubCard ( { name, streetName, streetNumber, image } ) {
   
   return (
     <div className="Club-card">
-      <h2>{name}</h2>
+      <h1>{name}</h1>
       <p>{streetName},{streetNumber}</p>
-      <img src={image} alt={image} />
+      <img className="img-card" src={image} alt={image} />
     </div>
   );
 }

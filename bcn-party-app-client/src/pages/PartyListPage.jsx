@@ -3,7 +3,7 @@ import axios from "axios";
 import AddParty from "../components/AddParty";
 import PartyCard from "../components/PartyCard";
  
-// const API_URL = "http://localhost:5005";
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 //  console.log(process.env.REACT_APP_API_URL)
  
 function PartyListPage() {
@@ -13,7 +13,7 @@ function PartyListPage() {
     const storedToken = localStorage.getItem('authToken');
     
     axios
-      .get(`${process.env.REACT_APP_API_URL}/api/party`, { headers: { Authorization: `Bearer ${storedToken}`}})
+      .get(`${API_URL}/api/party`, { headers: { Authorization: `Bearer ${storedToken}`}})
       .then((response) => setParties(response.data))
       .catch((error) => console.log(error));
   };

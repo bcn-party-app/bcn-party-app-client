@@ -3,7 +3,7 @@ import axios from "axios";
 import AddClub from "../components/AddClub";
 import ClubCard from "../components/ClubCard";
  
-// const API_URL = "http://localhost:5005";
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 //  console.log(process.env.REACT_APP_API_URL)
  
 function ClubListPage() {
@@ -13,7 +13,7 @@ function ClubListPage() {
     const storedToken = localStorage.getItem('authToken');
     
     axios
-      .get(`${process.env.REACT_APP_API_URL}/api/club`, { headers: { Authorization: `Bearer ${storedToken}`}})
+      .get(`${API_URL}/api/club`, { headers: { Authorization: `Bearer ${storedToken}`}})
       .then((response) => setClubs(response.data))
       .catch((error) => console.log(error));
   };

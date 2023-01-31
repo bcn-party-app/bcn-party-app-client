@@ -9,7 +9,8 @@ const PartyCard = (props) => {
     // const [attendees, setAttendees] = useState([]);
     const {partyId} = useParams;
     const navigate = useNavigate();
-    const value = useContext(OwnerContext)
+    //updating the consumer component PartyCard so it can properly access the isOwner value from OwnerContext.Provider
+    const {isOwner} = useContext(OwnerContext)
 
     const deleteParty = () => {
         //make a DELETE request to delete the Party

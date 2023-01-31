@@ -22,7 +22,7 @@ function App() {
         <Route path='/profile' element={<IsPrivate><ProfilePage /></IsPrivate>} />
         <Route path='/party' element={ <IsPrivate><PartyListPage /></IsPrivate>} />
         <Route path='/club' element={ <IsPrivate><ClubListPage /></IsPrivate>} />
-        <Route path='/party/:partyId' element={<IsPrivate><EditPartyPage /></IsPrivate>} />
+        <Route path='/party/:partyId/edit' element={<IsPrivate><EditPartyPage /></IsPrivate>} />
       </Routes>
       
     </div>

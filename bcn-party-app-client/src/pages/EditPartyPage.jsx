@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
  
 function EditPartyPage(props) {
   const [name, setName] = useState("");
@@ -15,7 +17,7 @@ function EditPartyPage(props) {
     const storedToken = localStorage.getItem('authToken');
     //update the party
     const updatedParty = {name, description}
-    axios.put(`${process.env.REACT_APP_API_URL}/api/party/${partyId}`, updatedParty, { headers: { Authorization: `Bearer ${storedToken}` } })
+    axios.put(`${API_URL}/api/party/${partyId}`, updatedParty, { headers: { Authorization: `Bearer ${storedToken}` } })
         .then(() => navigate(`/party/${partyId}`))
         .catch(err => console.log(err))
     // redirect the user to the party's page
@@ -28,7 +30,7 @@ function EditPartyPage(props) {
     // Make a DELETE request to delete the party
     const storedToken = localStorage.getItem('authToken');
     axios
-      .delete(`${process.env.REACT_APP_API_URL}/api/party/${partyId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+      .delete(`${API_URL}/api/party/${partyId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(() => {
         // Once the delete request is resolved successfully
         // navigate back to the list of partys.
@@ -40,7 +42,7 @@ function EditPartyPage(props) {
    useEffect(() => {  
     const storedToken = localStorage.getItem('authToken');                                // <== ADD
      axios
-       .get(`${process.env.REACT_APP_API_URL}/api/party/${partyId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+       .get(`${API_URL}/api/party/${partyId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
        .then((response) => {
          /* 
            We update the state with the party data coming from the response.

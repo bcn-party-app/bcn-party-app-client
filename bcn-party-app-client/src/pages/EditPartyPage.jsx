@@ -28,7 +28,7 @@ function EditPartyPage(props) {
     // Make a DELETE request to delete the party
     const storedToken = localStorage.getItem('authToken');
     axios
-      .delete(`${process.env.REACT_APP_API_URL}/api/partys/${partyId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+      .delete(`${process.env.REACT_APP_API_URL}/api/party/${partyId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(() => {
         // Once the delete request is resolved successfully
         // navigate back to the list of partys.

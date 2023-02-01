@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom"
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
@@ -31,6 +31,7 @@ const PartyCard = (props) => {
             <p>Music genre: {musicGenre}</p>
             <p>Party host: {owner}</p>
             <h5>Attendees: <span>{attendees.length}</span></h5>
+            {attendees.length > 0 && 
             <ul>
             {attendees.map((attendee) => {
                 return (
@@ -41,20 +42,11 @@ const PartyCard = (props) => {
                     </div>
                 )
             })}
-            </ul>
-            {/* this button needs to toggle between attend/don't attend and needs to make a call to the routes in the backend, accordingly:
-            - PUT api/party/:partyId/leave-party
-            - PUT api/party/:partyId/attend-party
-            First we need to check if the current user is an attendee or not, then display button accordingly
-            TO DO
-            - check if 
-            if ({attendees} includes current user) {
-                return 
-            }
-            */}
+            </ul>}
             
-
-            <button>Attend</button>
+            {/* this button needs to toggle between attend/don't attend and needs to make a call to the routes in the backend*/}
+{/*  */}
+            {attendees.includes(user._id) ? <button>Cancel Attend</button>: <button>Attend</button>}
 
 
             {/* the edit/delete buttons below need to be rendered only if current user is the user who created that party, and then make a request to the specific API  */}

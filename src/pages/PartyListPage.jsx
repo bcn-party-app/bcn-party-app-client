@@ -6,6 +6,8 @@ import PartyCard from "../components/PartyCard";
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 //  console.log(process.env.REACT_APP_API_URL)
  
+
+
 function PartyListPage() {
   const [parties, setParties] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -15,7 +17,9 @@ function PartyListPage() {
     
     axios
       .get(`${API_URL}/api/party`, { headers: { Authorization: `Bearer ${storedToken}`}})
-      .then((response) => {setParties(response.data); setIsLoading(false)} ) 
+      .then((response) => 
+      {console.log(response.data);
+        setParties(response.data); setIsLoading(false)} ) 
       .catch((error) => console.log(error));
   };
  

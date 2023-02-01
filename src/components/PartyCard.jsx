@@ -42,9 +42,20 @@ const PartyCard = (props) => {
                 )
             })}
             </ul>
-            {/* this button needs to toggle between attend/don't attend and needs to make a call to the routes in the backend*/}
-{/*  */}
+            {/* this button needs to toggle between attend/don't attend and needs to make a call to the routes in the backend, accordingly:
+            - PUT api/party/:partyId/leave-party
+            - PUT api/party/:partyId/attend-party
+            First we need to check if the current user is an attendee or not, then display button accordingly
+            TO DO
+            - check if 
+            if ({attendees} includes current user) {
+                return 
+            }
+            */}
+            
+
             <button>Attend</button>
+
 
             {/* the edit/delete buttons below need to be rendered only if current user is the user who created that party, and then make a request to the specific API  */}
             {   
@@ -58,7 +69,6 @@ const PartyCard = (props) => {
                 </>
             }
 
-        
         </div>
     );
 }

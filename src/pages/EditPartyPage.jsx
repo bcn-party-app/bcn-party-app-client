@@ -6,7 +6,31 @@ const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
  
 function EditPartyPage(props) {
   const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+  const [club, setClub] = useState("");
+  const [date, setDate] = useState("");
+  const [musicGenre, setMusicGenre] = useState("");
+  const [image, setImage] = useState("");
+
+
+  // ******** this method handles the file upload ********
+  const handleFileUpload = (e) => {
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
+ 
+    const uploadData = new FormData();
+ 
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new movie in '/api/movies' POST route
+    uploadData.append("image", e.target.files[0]);
+ 
+
+    axios.post(`${process.env.REACT_APP_API_URL}/api/upload`, uploadData)
+          .then(response => {
+            // console.log("response is: ", response);
+            // response carries "fileUrl" which we can use to update the state
+            setImage(response.data.image);
+          })
+          .catch(err => console.log("Error while uploading the file: ", err));
+      };
 
   const { partyId } = useParams();            // <== ADD
   
@@ -16,7 +40,7 @@ function EditPartyPage(props) {
     e.preventDefault();
     const storedToken = localStorage.getItem('authToken');
     //update the party
-    const updatedParty = {name, description}
+    const updatedParty = {name, club, date, musicGenre, image}
     axios.put(`${API_URL}/api/party/${partyId}`, updatedParty, { headers: { Authorization: `Bearer ${storedToken}` } })
         .then(() => navigate(`/party/${partyId}`))
         .catch(err => console.log(err))
@@ -50,7 +74,10 @@ function EditPartyPage(props) {
          */
          const oneParty = response.data;
          setName(oneParty.name);
-         setDescription(oneParty.description);
+         setClub(oneParty.club);
+         setDate(oneParty.date);
+         setMusicGenre(oneParty.musicGenre);
+         setImage(oneParty.image);
        })
        .catch((error) => console.log(error));
      
@@ -61,20 +88,41 @@ function EditPartyPage(props) {
       <h3>Edit the party</h3>
  
       <form onSubmit={handleSubmit}>
-        <label>Name:</label>
+        <label>name:</label>
         <input
           type="text"
           name="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        
+ 
         <label>Club:</label>
-        <textarea
-          name="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+        <select name="selectedClub" defaultValue="Selecionar">
+          <option value="apple">Apolo</option>
+          
+          
+        </select>
+        
+
+
+
+        <label>Date:</label>
+        <input
+          type="date"
+          name="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
         />
+
+        <label>Music Genre:</label>
+        <input
+          type="text"
+          name="musicGenre"
+          value={musicGenre}
+          onChange={(e) => setDate(e.target.value)}
+        />
+
+        <input type="file" onChange={(e) => handleFileUpload(e)} />
  
         <input type="submit" value="Submit" />
       </form>

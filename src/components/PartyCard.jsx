@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom"
 
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
@@ -58,7 +58,9 @@ const PartyCard = (props) => {
             
             {/* this button needs to toggle between attend/don't attend and needs to make a call to the routes in the backend*/}
 {/*  */}
+
             {attendees.includes(user._id) ? <button onClick={leaveParty}>Cancel Attend</button> : <button onClick={attendParty}>Attend</button>}
+
 
 
             {/* the edit/delete buttons below need to be rendered only if current user is the user who created that party, and then make a request to the specific API  */}

@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom"
 
-import { useParams } from "react";
 import { useContext } from "react";
 
 import { AuthContext } from "../context/auth.context";
@@ -8,9 +7,9 @@ import axios from "axios";
 
 
 const PartyCard = (props) => {
-    const {name, club, date, musicGenre, image, attendees, owner} = props;
+    const {name, club, date, musicGenre, image, attendees, owner, _id} = props;
     // const [attendees, setAttendees] = useState([]);
-    const {partyId} = useParams;
+    const partyId = _id;
     const navigate = useNavigate();
     //updating the consumer component PartyCard so it can properly access the isOwner value from OwnerContext.Provider
     const {user} = useContext(AuthContext);  //can access id of curr logged in user

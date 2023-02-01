@@ -21,6 +21,18 @@ const PartyCard = (props) => {
         .then(() => navigate("/party"))
         .catch((err) => console.log(err));
     };
+
+    const attendParty = () => {
+        axios.put(`${process.env.REACT_APP_API_URL}/party/${partyId}/attend-party`)
+        // .then(() => res.json())
+        .catch((err) => console.log(err))
+    }
+
+    const leaveParty = () => {
+        axios.put(`${process.env.REACT_APP_API_URL}/party/${partyId}/leave-party`)
+        // .then(() => res.json())
+        .catch((err) => console.log(err))
+    }
     
     return (
         <div className="PartyCard">
@@ -46,7 +58,10 @@ const PartyCard = (props) => {
             
             {/* this button needs to toggle between attend/don't attend and needs to make a call to the routes in the backend*/}
 {/*  */}
-            {/* {attendees.includes(user._id) ? <button>Cancel Attend</button>: <button>Attend</button>} */}
+
+            {attendees.includes(user._id) ? <button onClick={leaveParty}>Cancel Attend</button> : <button onClick={attendParty}>Attend</button>}
+
+
 
             {/* the edit/delete buttons below need to be rendered only if current user is the user who created that party, and then make a request to the specific API  */}
             {   
@@ -60,7 +75,6 @@ const PartyCard = (props) => {
                 </>
             }
 
-        
         </div>
     );
 }

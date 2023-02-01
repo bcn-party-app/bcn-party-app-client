@@ -1,1 +1,0 @@
-# bcn-party-app-client

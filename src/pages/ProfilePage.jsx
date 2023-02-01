@@ -8,6 +8,7 @@ import avatarImage from '../assets/default-avatar.png';
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 
 const ProfilePage = props => {
+    console.log("gustavo");
     const [showUpload, setShowUpload] = useState(false);
     const [image, setImage] = useState("");
     const { user, setUser } = useContext(AuthContext);

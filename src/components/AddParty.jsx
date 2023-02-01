@@ -1,6 +1,7 @@
 import { useState } from "react";
 import service from "../service/auth.service";
 import axios from "axios";
+// import SelectClub from "./components/select-club.jsx";
  
 // const API_URL = "http://localhost:5005";
  
@@ -76,12 +77,19 @@ function AddParty(props) {
         />
  
         <label>Club:</label>
-        <input 
+        <select  name="selectedClub">
+          <option value="apple">Apolo</option>
+          
+          
+        </select>
+        
+
+        {/* <input 
           type="text"
           name="club"
           value={club.name}
           onChange={(e) => setClub(e.target.value)}
-        />
+        /> */}
 
         <label>Date:</label>
         <input

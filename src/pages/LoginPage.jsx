@@ -37,11 +37,11 @@ const LoginPage = () => {
             <form onSubmit={handleSubmit} className="pt-20 flex-auto">
                 <div className="flex flex-col w-72 gap-6">
                      
-                    <Input variant="Email" label="Email"
+                    <Input label="Email"
                     type="text" name="email" value={user.email} onChange={handleChange} />
                     
                     
-                    <Input variant="Password" label="Password"
+                    <Input  label="Password"
                     type="password" name="password" value={user.password}  onChange={handleChange} />
                     <br />
 

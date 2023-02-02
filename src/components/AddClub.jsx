@@ -67,16 +67,16 @@ function AddClub(props) {
             <form onSubmit={handleSubmit} className="pt-8 flex-auto">
                 <div className="flex flex-col w-72 gap-6">
                      
-                    <Input variant="Name" label="Name"
+                    <Input  label="Name"
                     type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
                     
-                    <Input variant="streetName" label="Street Name"
+                    <Input  label="Street Name"
                     type="text" name="streetName" value={streetName}  onChange={(e) => setStreetName(e.target.value)} />
                     
-                    <Input variant="streetNumber" label="Street Number"
-                    type="text" name="streetNumber" value={streetNumber}  onChange={(e) => setStreetName(e.target.value)} />
+                    <Input  label="Street Number"
+                    type="number" name="streetNumber" value={streetNumber}  onChange={(e) => setStreetNumber(e.target.value)} />
                     
-                    <Input variant="Image" label="Image"
+                    <Input label="Image"
                     type="file" onChange={(e) => handleFileUpload(e)} />
 
                     <button className="w-72 rounded-lg px-4 py-2 bg-gradient-to-tr from-blue-600 to-blue-400 hover:text-white" 

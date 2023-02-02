@@ -3,7 +3,8 @@ import axios from "axios";
 import AddClub from "../components/AddClub";
 import ClubCard from "../components/ClubCard";
  
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
+const API_URL = "http://localhost:5005";
+//const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 //  console.log(process.env.REACT_APP_API_URL)
  
 function ClubListPage() {
@@ -26,7 +27,7 @@ function ClubListPage() {
  
   
   return (
-    <div className="clubListPage">
+    <div className="">
 
         <AddClub refreshClubs={getAllClubs} />
       

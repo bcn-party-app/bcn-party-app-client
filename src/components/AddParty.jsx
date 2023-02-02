@@ -1,9 +1,11 @@
 import { useState } from "react";
 // import service from "../service/auth.service";
 import axios from "axios";
+import SelectClub from "../components/SelectClub"
 // import SelectClub from "./components/select-club.jsx";
  
-// const API_URL = "http://localhost:5005";
+const API_URL = "http://localhost:5005";
+//const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
  
 function AddParty(props) {
   const [name, setName] = useState("");
@@ -32,7 +34,7 @@ function AddParty(props) {
 //       })
 //       .catch(err => console.log("Error while uploading the file: ", err));
 //   };
-    axios.post(`${process.env.REACT_APP_API_URL}/api/upload`, uploadData)
+    axios.post(`${API_URL}/api/upload`, uploadData)
           .then(response => {
             // console.log("response is: ", response);
             // response carries "fileUrl" which we can use to update the state
@@ -49,7 +51,7 @@ function AddParty(props) {
     // Add a new club
     const newParty = { name, club, date, musicGenre, image }
     // Add that club to the DB ==> send a POST request to 'http://localhost:5005/api/clubs'
-    axios.post(`${process.env.REACT_APP_API_URL}/api/party`, newParty, { headers: { Authorization: `Bearer ${storedToken}` } })
+    axios.post(`${API_URL}/api/party`, newParty, { headers: { Authorization: `Bearer ${storedToken}` } })
     .then((response) => {
         // Reset the state
         setName("");
@@ -76,12 +78,9 @@ function AddParty(props) {
           onChange={(e) => setName(e.target.value)}
         />
  
-        <label>Club:</label>
-        <select  name="selectedClub">
-          <option value="apple">Apolo</option>
-          
-          
-        </select>
+        <label>Club:
+        <SelectClub />
+        </label>
         
 
 
@@ -106,7 +105,7 @@ function AddParty(props) {
           type="text"
           name="musicGenre"
           value={musicGenre}
-          onChange={(e) => setDate(e.target.value)}
+          onChange={(e) => setMusicGenre(e.target.value)}
         />
 
         <input type="file" onChange={(e) => handleFileUpload(e)} />

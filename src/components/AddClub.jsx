@@ -2,7 +2,8 @@ import { useState } from "react";
 import service from "../service/auth.service";
 import axios from "axios";
  
-// const API_URL = "http://localhost:5005";
+const API_URL = "http://localhost:5005";
+//const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
  
 function AddClub(props) {
   const [name, setName] = useState("");
@@ -31,7 +32,7 @@ function AddClub(props) {
 //       .catch(err => console.log("Error while uploading the file: ", err));
 //   };
 
-    axios.post(`${process.env.REACT_APP_API_URL}/api/upload`, uploadData)
+    axios.post(`${API_URL}/api/upload`, uploadData)
           .then(response => {
             // console.log("response is: ", response);
             // response carries "fileUrl" which we can use to update the state
@@ -47,7 +48,7 @@ function AddClub(props) {
     // Add a new club
     const newClub = { name, streetName, streetNumber, image }
     // Add that club to the DB ==> send a POST request to 'http://localhost:5005/api/clubs'
-    axios.post(`${process.env.REACT_APP_API_URL}/api/club`, newClub, { headers: { Authorization: `Bearer ${storedToken}` } })
+    axios.post(`${API_URL}/api/club`, newClub, { headers: { Authorization: `Bearer ${storedToken}` } })
     .then((response) => {
         // Reset the state
         setName("");
@@ -61,8 +62,10 @@ function AddClub(props) {
   }
  
   return (
-    <div className="AddClub">
+    <div className="bg-gray-500 m-8 pb-5 pl-8 pr-8 rounded-xl shadow-md">
+      <div className="pt-3 text-center" >
       <h3>Add club</h3>
+      </div>
  
       <form onSubmit={handleSubmit}>
         <label>name:</label>

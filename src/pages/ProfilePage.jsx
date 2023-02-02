@@ -1,14 +1,15 @@
 
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 import { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import avatarImage from '../assets/default-avatar.png';
+import SelectClub from "../components/SelectClub"
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
+const API_URL = "http://localhost:5005";
+//const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 
 const ProfilePage = props => {
-    console.log("gustavo");
     const [showUpload, setShowUpload] = useState(false);
     const [image, setImage] = useState("");
     const { user, setUser } = useContext(AuthContext);
@@ -43,15 +44,15 @@ const ProfilePage = props => {
             .catch(err => console.error(err))
       }
   return (
-<div className="homePageContainer">
-    <div className="ovalBackground">
+<div className="bg-gray-300 flex items-center  flex-col">
+    <div className="">
         <div style={{ width: 'inherit'}}>  
             <h1>Profile</h1>
             <p className="field">Name:</p>
             <p>{user?.name}</p>
           
         </div>
-             <div className="homeRightSection">
+             <div className="">
                 <div>
                     {user && 
                     user.image ? 
@@ -71,8 +72,8 @@ const ProfilePage = props => {
                     }
                 </div> 
             </div>
-        
     </div>
+    <SelectClub />
 </div>
   )
 }

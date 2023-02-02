@@ -79,18 +79,9 @@ function AddParty(props) {
         />
  
         <label>Club:
-        <SelectClub />
+        <SelectClub club={club} setClub={setClub}/>
         </label>
         
-
-
-
-        {/* <input 
-          type="text"
-          name="club"
-          value={club.name}
-          onChange={(e) => setClub(e.target.value)}
-        /> */}
 
         <label>Date:</label>
         <input

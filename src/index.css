@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.login-form, .signup-form, .home-page, .addclub-form, .addparty-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 body {
   margin: 0 auto;
   background-color: none;

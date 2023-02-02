@@ -2,6 +2,7 @@ import { useState } from "react";
 // import axios from 'axios';
 import { useNavigate, Link } from "react-router-dom";
 import authMethods from "../service/auth.service"
+import { Input } from "@material-tailwind/react";
 
 const SignUpPage = () => {
     const [user, setUser] = useState({name: '', email: '', password: ''});
@@ -22,37 +23,33 @@ const SignUpPage = () => {
         
     }
   return (
-    <div className="signUpContainer">
-        <div className="ovalBackground">
-            <div style={{ width: 'inherit'}}>   
-                <form onSubmit={handleSubmit} className="signUpForm">
-                    <div>
-                        <h1>Sign up</h1> 
-                        <label>Name</label>
-                        <br />
-                        <input type="text" name="name" value={user.name} onChange={handleChange} />
-                        <br />
-                        <label>Email</label>
-                        <br />
-                        <input type="text" name="email" value={user.email}  onChange={handleChange} />
-                        <br />
-                        <label>Password</label>
-                        <br />
-                        <input type="password" name="password" value={user.password}  onChange={handleChange} />
 
-                        <div className="signUpRightSection">
-                             <button type="submit"><b>Create account</b></button>
-                          </div>
-                    </div>
-                </form>
-                <div className="x">
-                          <p>Already have an account?</p>
-                          <Link to={"/login"}> Login</Link>
-                        </div> 
+    <div className="login-form">   
+            <form onSubmit={handleSubmit} className="pt-20 flex-auto">
+                <div className="flex flex-col w-72 gap-6">
+                     
+                    <Input variant="Name" label="Name"
+                    type="text" name="name" value={user.name} onChange={handleChange} />
                     
-            </div>
+                    <Input variant="Email" label="Email"
+                    type="text" name="email" value={user.email} onChange={handleChange} />
+                    
+                    
+                    <Input variant="Password" label="Password"
+                    type="password" name="password" value={user.password}  onChange={handleChange} />
+                    <br />
+
+                    <button className="w-72 rounded-lg px-4 py-2 bg-gradient-to-tr from-blue-600 to-blue-400 hover:text-white" 
+                    type="submit"><b>Sign Up</b></button>
+                    
+                </div>
+
+            </form>
+            <p className="w-72 text-center pt-5" >Already have an account? <br/> <Link className="text-blue-400" to={'/login'}>Login!</Link> </p>
         </div>
-    </div>
+
+
+   
   )
 }
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import service from "../service/auth.service";
 import axios from "axios";
+import { Input } from "@material-tailwind/react";
  
 const API_URL = "http://localhost:5005";
 //const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
@@ -62,41 +63,68 @@ function AddClub(props) {
   }
  
   return (
-    <div className="bg-gray-500 m-8 pb-5 pl-8 pr-8 rounded-xl shadow-md">
-      <div className="pt-3 text-center" >
-      <h3>Add club</h3>
-      </div>
- 
-      <form onSubmit={handleSubmit}>
-        <label>name:</label>
-        <input
-          type="text"
-          name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
- 
-        <label>street Name:</label>
-        <input
-          type="text"
-          name="streetName"
-          value={streetName}
-          onChange={(e) => setStreetName(e.target.value)}
-        />
+    <div className="addclub-form">  
+            <form onSubmit={handleSubmit} className="pt-8 flex-auto">
+                <div className="flex flex-col w-72 gap-6">
+                     
+                    <Input variant="Name" label="Name"
+                    type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
+                    
+                    <Input variant="streetName" label="Street Name"
+                    type="text" name="streetName" value={streetName}  onChange={(e) => setStreetName(e.target.value)} />
+                    
+                    <Input variant="streetNumber" label="Street Number"
+                    type="text" name="streetNumber" value={streetNumber}  onChange={(e) => setStreetName(e.target.value)} />
+                    
+                    <Input variant="Image" label="Image"
+                    type="file" onChange={(e) => handleFileUpload(e)} />
 
-        <label>street Number:</label>
-        <input
-          type="number"
-          name="streetNumber"
-          value={streetNumber}
-          onChange={(e) => setStreetNumber(e.target.value)}
-        />
+                    <button className="w-72 rounded-lg px-4 py-2 bg-gradient-to-tr from-blue-600 to-blue-400 hover:text-white" 
+                    type="submit"><b>Add New Club</b></button>
+                    
+                </div>
 
-        <input type="file" onChange={(e) => handleFileUpload(e)} />
+            </form>
+            
+        </div>
+
+  
+
+    // <div className="bg-gray-500 m-8 pb-5 pl-8 pr-8 rounded-xl shadow-md">
+    //   <div className="pt-3 text-center" >
+    //   <h3>Add club</h3>
+    //   </div>
  
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    //   <form onSubmit={handleSubmit}>
+    //     <label>name:</label>
+    //     <input
+    //       type="text"
+    //       name="name"
+    //       value={name}
+    //       onChange={(e) => setName(e.target.value)}
+    //     />
+ 
+    //     <label>street Name:</label>
+    //     <input
+    //       type="text"
+    //       name="streetName"
+    //       value={streetName}
+    //       onChange={(e) => setStreetName(e.target.value)}
+    //     />
+
+    //     <label>street Number:</label>
+    //     <input
+    //       type="number"
+    //       name="streetNumber"
+    //       value={streetNumber}
+    //       onChange={(e) => setStreetNumber(e.target.value)}
+    //     />
+
+    //     <input type="file" onChange={(e) => handleFileUpload(e)} />
+ 
+    //     <button type="submit">Submit</button>
+    //   </form>
+    // </div>
   );
 }
  

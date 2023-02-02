@@ -28,7 +28,7 @@ function SelectClub(props) {
       <label className="pr-2">Club:</label>
       <select className="rounded-md px-8 py-2 " value={props.club} onChange={(e)=>props.setClub(e.target.value)}>
       {clubs.map(club => (
-        <option key={club._id} value={club._id}>
+        <option className="" key={club._id} value={club._id}>
           {club.name}
         </option>
       ))}

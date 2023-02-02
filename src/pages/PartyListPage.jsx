@@ -40,7 +40,7 @@ function PartyListPage() {
         <AddParty refreshParties={getAllParties} />
       
         {parties.map((party) => {
-        return <PartyCard key ={party._id} {...party} />})
+        return <PartyCard key={party._id} {...party} getAllParties={getAllParties}/>})
         // <partyCard key={party._id} name={party.name} musicGenre={party.musicGenre} _id={party._id}/>)
         
         }     

@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
+const API_URL = "http://localhost:5005";
+//const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
  
 function EditPartyPage(props) {
   const [name, setName] = useState("");
@@ -23,7 +24,7 @@ function EditPartyPage(props) {
     uploadData.append("image", e.target.files[0]);
  
 
-    axios.post(`${process.env.REACT_APP_API_URL}/api/upload`, uploadData)
+    axios.post(`${API_URL}/api/upload`, uploadData)
           .then(response => {
             // console.log("response is: ", response);
             // response carries "fileUrl" which we can use to update the state

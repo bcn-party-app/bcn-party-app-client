@@ -3,13 +3,14 @@ import axios from "axios";
 import AddParty from "../components/AddParty";
 import PartyCard from "../components/PartyCard";
  
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
+const API_URL = "http://localhost:5005";
+//const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 //  console.log(process.env.REACT_APP_API_URL)
  
 
 
 function PartyListPage() {
-  const [parties, setParties] = useState([]);
+  const [parties, setParties] = useState(undefined);
   const [isLoading, setIsLoading] = useState(true);
  
   const getAllParties = () => {
@@ -17,8 +18,8 @@ function PartyListPage() {
     
     axios
       .get(`${API_URL}/api/party`, { headers: { Authorization: `Bearer ${storedToken}`}})
-      .then((response) => 
-      {console.log(response.data);
+      .then((response) => {
+      console.log(response.data);
         setParties(response.data); setIsLoading(false)} ) 
       .catch((error) => console.log(error));
   };
@@ -34,15 +35,20 @@ function PartyListPage() {
   }
   return (
     <div className="PartyListPage">
-
+       {parties &&
+       <>
         <AddParty refreshParties={getAllParties} />
       
-        {parties.map((party) => 
+        {parties.map((party) => {
+        return <PartyCard key ={party._id} {...party} />})
         // <partyCard key={party._id} name={party.name} musicGenre={party.musicGenre} _id={party._id}/>)
-        <PartyCard key ={party._id} {...party} />)
+        
         }     
-       
-    </div>
+       </>
+    
+  }
+  </div>
+    
   );
 }
  

@@ -5,6 +5,8 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 
+const API_URL = "http://localhost:5005";
+//const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 
 const PartyCard = (props) => {
     const {name, club, date, musicGenre, image, attendees, owner, _id} = props;
@@ -16,20 +18,20 @@ const PartyCard = (props) => {
 
     const deleteParty = () => {
         //make a DELETE request to delete the Party
-        axios.delete(`${process.env.REACT_APP_API_URL}/api/party/${partyId}`)
+        axios.delete(`${API_URL}/api/party/${partyId}`)
     // Once the delete request is resolved successfully, navigate back to the list of parties
         .then(() => navigate("/party"))
         .catch((err) => console.log(err));
     };
 
     const attendParty = () => {
-        axios.put(`${process.env.REACT_APP_API_URL}/party/${partyId}/attend-party`)
+        axios.put(`${API_URL}/party/${partyId}/attend-party`)
         // .then(() => res.json())
         .catch((err) => console.log(err))
     }
 
     const leaveParty = () => {
-        axios.put(`${process.env.REACT_APP_API_URL}/party/${partyId}/leave-party`)
+        axios.put(`${API_URL}/party/${partyId}/leave-party`)
         // .then(() => res.json())
         .catch((err) => console.log(err))
     }

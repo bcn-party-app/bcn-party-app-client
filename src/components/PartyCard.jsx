@@ -25,14 +25,14 @@ const PartyCard = (props) => {
     };
 
     const attendParty = () => {
-        axios.put(`${API_URL}/party/${partyId}/attend-party`)
-        // .then(() => res.json())
+        axios.put(`${API_URL}/party/${partyId}/attend-party`, user._id)
+        .then(() => console.log("attendee is joining"))
         .catch((err) => console.log(err))
     }
 
     const leaveParty = () => {
-        axios.put(`${API_URL}/party/${partyId}/leave-party`)
-        // .then(() => res.json())
+        axios.put(`${API_URL}/party/${partyId}/leave-party`, user._id)
+        .then(() => console.log("attendee is leaving"))
         .catch((err) => console.log(err))
     }
     
@@ -61,7 +61,7 @@ const PartyCard = (props) => {
             {/* this button needs to toggle between attend/don't attend and needs to make a call to the routes in the backend*/}
 {/*  */}
 
-            {attendees.includes(user._id) ? <button onClick={leaveParty}>Cancel Attend</button> : <button onClick={attendParty}>Attend</button>}
+            {attendees.includes(user._id) ? <button onClick={leaveParty}>Cancel attendance</button> : <button onClick={attendParty}>Attend</button>}
 
 
 

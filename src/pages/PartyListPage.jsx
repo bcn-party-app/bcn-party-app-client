@@ -19,7 +19,7 @@ function PartyListPage() {
     axios
       .get(`${API_URL}/api/party`, { headers: { Authorization: `Bearer ${storedToken}`}})
       .then((response) => {
-      console.log(response.data);
+      console.log("Response from get/party", response.data);
         setParties(response.data); setIsLoading(false)} ) 
       .catch((error) => console.log(error));
   };

@@ -22,7 +22,8 @@ function NavBar() {
     {isLoggedIn && (
       <>
       
-    {user && <Typography className="font-link font-bold hover:text-blue-700 flex items-center">Welcome back {user.name}</Typography>}
+    {user && <Typography className="welcome-back font-link font-bold hover:text-blue-700 flex items-center">
+    Welcome back {user.name}</Typography>}
       <Typography
         as="li"
         variant="small"

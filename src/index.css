@@ -34,6 +34,14 @@ font-family: 'Montserrat', sans-serif;
   justify-content: center;
   width: 50vw;
 }
+.welcome.back {
+  white-space: nowrap;
+}
+.profile-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .one-line {
   white-space: nowrap;
 }

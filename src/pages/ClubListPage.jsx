@@ -27,15 +27,15 @@ function ClubListPage() {
  
   
   return (
-    <div className="">
+    <div className="PartyListPage">
 
         <AddClub refreshClubs={getAllClubs} />
-      
+        <div className="partyCardsContainer">
         {clubs.map((club) => 
         // <ClubCard key={club._id} name={club.name} musicGenre={club.musicGenre} _id={club._id}/>)
         <ClubCard key ={club._id} {...club} />)
         }     
-       
+        </div>
     </div>
   );
 }

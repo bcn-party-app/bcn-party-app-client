@@ -13,7 +13,7 @@ function ClubCard ( { name, streetName, streetNumber, image } ) {
   
   return (
 
-    <Card className="w-96">
+    <Card className="w-96 party-card">
       <CardHeader color="gray" className="relative h-15">
         <img
           src={image !== "" ? image : partyPlaceholder}
@@ -26,11 +26,11 @@ function ClubCard ( { name, streetName, streetNumber, image } ) {
           {name}
         </Typography>
         <Typography>
-          ...
+          
         </Typography>
       </CardBody>
       <CardFooter divider className="flex items-center justify-between py-3">
-        <Typography variant="small">€15</Typography>
+        <Typography variant="small">   </Typography>
         <Typography variant="small" color="gray" className="flex gap-1">
           <i className="fas fa-map-marker-alt fa-sm mt-[3px]" />
           <p>{streetName},{streetNumber}</p>

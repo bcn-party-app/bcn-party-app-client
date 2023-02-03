@@ -54,61 +54,64 @@ const PartyCard = (props) => {
     }
     
     return (
-
-    <Card className="w-96 party-card">
-      <CardHeader color="gray" className="card-header relative h-15">
-        <img
-          src={image !== "" ? image : partyPlaceholder}
-          alt={image}
-          className="h-full w-full"
-        />
-      </CardHeader>
-      <CardBody className="text-center">
-        <Typography variant="h5" className="mb-2">
-          {name}
-        </Typography>
-        <Typography className="text-blue">
-            <p>Date: {date}</p>
-            <p>Music genre: {musicGenre}</p>
-            <p>Party host: {owner.name}</p>
-        </Typography>
-      </CardBody>
-      <CardFooter divider className="flex items-center justify-between py-3">
-        <Typography variant="small">
-        <h5>Attendees: <span>{attendees.length}</span></h5>
-            {attendees.length > 0 && 
-            <ul>
-            {attendees.map((attendee) => {
-                return (
-                    <div className="Attendee" key={attendee._id}>
-                        <li>{attendee.name}
-                            <img src={attendee.image} alt="userImage" />
-                        </li>
-                    </div>
-                )
-            })}
-            </ul>}
-            {attendees.includes(user._id) ? <Button onClick={leaveParty}>Cancel attendance</Button> : <Button onClick={attendParty}>Attend</Button>}
-            {   
-                user._id === owner._id &&
-                <>
-                <Link to={`/party/${partyId}/edit`}>
-                    <Button>Edit party</Button>
-                </Link>
-
-                <Button onClick={deleteParty}>Delete party</Button>
-                </>
-            }
-        </Typography>
-        <Typography variant="small" color="gray" className="party-location flex gap-1">
-          <i className="fas fa-map-marker-alt fa-sm mt-[3px]" />
-          <h4>Location: {club.name}</h4>
-        </Typography>
-      </CardFooter>
-    </Card>
-
-
-        
+      <>
+      {
+        name &&
+          
+        <Card className="w-96 party-card">
+        <CardHeader color="gray" className="card-header relative h-15">
+          <img
+            src={image !== "" ? image : partyPlaceholder}
+            alt={image}
+            className="h-full w-full"
+          />
+        </CardHeader>
+        <CardBody className="text-center">
+          <Typography variant="h5" className="mb-2">
+            {name}
+          </Typography>
+          <Typography className="text-blue">
+              <p>Date: {date}</p>
+              <p>Music genre: {musicGenre}</p>
+              <p>Party host: {owner.name}</p>
+          </Typography>
+        </CardBody>
+        <CardFooter divider className="flex items-center justify-between py-3">
+          <Typography variant="small">
+          <h5>Attendees: <span>{attendees.length}</span></h5>
+              {attendees.length > 0 && 
+              <ul>
+              {attendees.map((attendee) => {
+                  return (
+                      <div className="Attendee" key={attendee._id}>
+                          <li>{attendee.name}
+                              <img src={attendee.image} alt="userImage" />
+                          </li>
+                      </div>
+                  )
+              })}
+              </ul>}
+              {attendees.includes(user._id) ? <Button onClick={leaveParty}>Cancel attendance</Button> : <Button onClick={attendParty}>Attend</Button>}
+              {   
+                  user._id === owner._id &&
+                  <>
+                  <Link to={`/party/${partyId}/edit`}>
+                      <Button>Edit party</Button>
+                  </Link>
+  
+                  <Button onClick={deleteParty}>Delete party</Button>
+                  </>
+              }
+          </Typography>
+          <Typography variant="small" color="gray" className="party-location flex gap-1">
+            <i className="fas fa-map-marker-alt fa-sm mt-[3px]" />
+            <h4>Location: {club.name}</h4>
+          </Typography>
+        </CardFooter>
+      </Card>
+      
+      }
+      </>
     );
 }
  

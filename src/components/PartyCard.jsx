@@ -4,9 +4,10 @@ import { useContext } from "react";
 
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
-import partyPlaceholder from "../assets/default-avatar.png"
+import partyPlaceholder from "../assets/defaultPartyImg.png"
 
 import {
+    Button,
     Card,
     CardHeader,
     CardBody,
@@ -54,10 +55,10 @@ const PartyCard = (props) => {
     
     return (
 
-        <Card className="w-96">
-      <CardHeader color="blue" className="relative h-56">
+    <Card className="w-96 party-card">
+      <CardHeader color="gray" className="card-header relative h-15">
         <img
-          src={image}
+          src={image !== "" ? image : partyPlaceholder}
           alt={image}
           className="h-full w-full"
         />
@@ -66,9 +67,7 @@ const PartyCard = (props) => {
         <Typography variant="h5" className="mb-2">
           {name}
         </Typography>
-        <Typography>
-            
-            <img src={image !== "" ? image : partyPlaceholder} alt="partyImage" />
+        <Typography className="text-blue">
             <p>Date: {date}</p>
             <p>Music genre: {musicGenre}</p>
             <p>Party host: {owner.name}</p>
@@ -89,29 +88,19 @@ const PartyCard = (props) => {
                 )
             })}
             </ul>}
-            
-            {/* this button needs to toggle between attend/don't attend and needs to make a call to the routes in the backend*/}
-{/*  */}
-
-            {attendees.includes(user._id) ? <button onClick={leaveParty}>Cancel attendance</button> : <button onClick={attendParty}>Attend</button>}
-
-
-
-            {/* the edit/delete buttons below need to be rendered only if current user is the user who created that party, and then make a request to the specific API  */}
+            {attendees.includes(user._id) ? <Button onClick={leaveParty}>Cancel attendance</Button> : <Button onClick={attendParty}>Attend</Button>}
             {   
                 user._id === owner._id &&
                 <>
                 <Link to={`/party/${partyId}/edit`}>
-                    <button>Edit this party</button>
+                    <Button>Edit party</Button>
                 </Link>
 
-                <button onClick={deleteParty}>Delete this party</button>
+                <Button onClick={deleteParty}>Delete party</Button>
                 </>
             }
-
-        
         </Typography>
-        <Typography variant="small" color="gray" className="flex gap-1">
+        <Typography variant="small" color="gray" className="party-location flex gap-1">
           <i className="fas fa-map-marker-alt fa-sm mt-[3px]" />
           <h4>Location: {club.name}</h4>
         </Typography>

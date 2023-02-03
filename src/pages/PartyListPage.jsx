@@ -38,12 +38,13 @@ function PartyListPage() {
        {parties &&
        <>
         <AddParty refreshParties={getAllParties} />
-      
+      <div className="partyCardsContainer">
         {parties.map((party) => {
         return <PartyCard key={party._id} {...party} getAllParties={getAllParties}/>})
         // <partyCard key={party._id} name={party.name} musicGenre={party.musicGenre} _id={party._id}/>)
         
         }     
+       </div>
        </>
     
   }

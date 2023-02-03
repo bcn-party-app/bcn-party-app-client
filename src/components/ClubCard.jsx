@@ -1,3 +1,5 @@
+import partyPlaceholder from "../assets/defaultPartyImg.png"
+
 import {
   Card,
   CardHeader,
@@ -12,9 +14,9 @@ function ClubCard ( { name, streetName, streetNumber, image } ) {
   return (
 
     <Card className="w-96">
-      <CardHeader color="blue" className="relative h-56">
+      <CardHeader color="gray" className="relative h-15">
         <img
-          src={image}
+          src={image !== "" ? image : partyPlaceholder}
           alt={image}
           className="h-full w-full"
         />

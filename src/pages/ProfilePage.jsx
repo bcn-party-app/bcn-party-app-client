@@ -36,7 +36,7 @@ const ProfilePage = props => {
           .then(response => {
             // console.log("response is: ", response);
             // response carries "fileUrl" which we can use to update the state
-            setImage(response.data.image);
+            setImage(response.data.fileUrl);
           })
            
           .catch(err => console.log("Error while uploading the file: ", err));
@@ -79,7 +79,7 @@ const ProfilePage = props => {
         {user?.name}
         </Typography>
         <Typography color="blue" className="font-medium" textGradient>
-          CEO / Co-Founder
+          
         </Typography>
       </CardBody>
       <CardFooter className="flex justify-center gap-7 pt-2">

@@ -102,7 +102,7 @@ const PartyCard = (props) => {
         </Typography>
         <Typography variant="small" color="gray" className="party-location flex gap-1">
           <i className="fas fa-map-marker-alt fa-sm mt-[3px]" />
-          <h4>Location: {club.name}</h4>
+          <h4>Location: {club && club.name}</h4>
         </Typography>
       </CardFooter>
     </Card>

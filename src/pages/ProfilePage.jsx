@@ -53,12 +53,12 @@ const ProfilePage = props => {
             .catch(err => console.error(err))
       }
   return (
-    <Card className="w-96">
-      <CardHeader floated={false} className="h-80">
-      <div>
+    <Card className="w-96 party-card">
+      <CardHeader floated={false} className="h-80 card-header">
+      <div className="profile-img">
                     {user && 
                     user.image ? 
-                    <img src={user.image} alt={"profile_image"} className="" /> :
+                    <img src={user.image} alt={"profile_image"} style={{width: '100px', height: '100px',  borderRadius: '75%'}} /> :
                     <img src={avatarImage} alt={"profile_image"} style={{width: '100px', height: '100px',  borderRadius: '75%'}} />
                     }
                     {!showUpload &&

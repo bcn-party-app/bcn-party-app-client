@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import SelectClub from "../components/SelectClub"
+import { Input, Button } from "@material-tailwind/react";
 
 const API_URL = "https://bcn-party.cyclic.app";
 //const API_URL = process.env.REACT_APP_API_URL || "https://bcn-party.cyclic.app";
@@ -43,7 +45,7 @@ function EditPartyPage(props) {
     //update the party
     const updatedParty = {name, club, date, musicGenre, image}
     axios.put(`${API_URL}/api/party/${partyId}`, updatedParty, { headers: { Authorization: `Bearer ${storedToken}` } })
-        .then(() => navigate(`/party/${partyId}`))
+        .then(() => navigate(`/party`))
         .catch(err => console.log(err))
     // redirect the user to the party's page
   }
@@ -85,51 +87,38 @@ function EditPartyPage(props) {
    }, [partyId]);
   
   return (
-    <div className="EditPartyPage">
-      <h3>Edit the party</h3>
- 
-      <form onSubmit={handleSubmit}>
-        <label>name:</label>
-        <input
-          type="text"
-          name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
- 
-        <label>Club:</label>
-        <select name="selectedClub" defaultValue="Selecionar">
-          <option value="apple">Apolo</option>
-          
-          
-        </select>
-        
+    <div className="addclub-form">  
+            <form onSubmit={handleSubmit} className="pt-8 flex-auto">
+                <div className="flex flex-col w-72 gap-6">
+                     
+                    <Input  label="Name"
+                    type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
+                    
+                    <label>
+                    <SelectClub club={club} setClub={setClub}/>
+                    </label>
+                    
 
+                    <Input  label="Date"
+                    type="date" name="date" value={date}  onChange={(e) => setDate(e.target.value)} />
+                    
+                    <Input  label="MusicGenre"
+                    type="text" name="musicGenre" value={musicGenre}  onChange={(e) => setMusicGenre(e.target.value)} />
+                    
 
+                    <Input  label="Image"
+                    type="file" onChange={(e) => handleFileUpload(e)} />
 
-        <label>Date:</label>
-        <input
-          type="date"
-          name="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        />
+                    <Button className="w-72 rounded-lg px-4 py-2 bg-gradient-to-tr from-blue-200 to-blue-400 hover:text-white" 
+                    type="submit"><b>Update Party</b></Button>
 
-        <label>Music Genre:</label>
-        <input
-          type="text"
-          name="musicGenre"
-          value={musicGenre}
-          onChange={(e) => setDate(e.target.value)}
-        />
+                   <Button onClick={deleteParty}>Delete party</Button>
+                    
+                </div>
 
-        <input type="file" onChange={(e) => handleFileUpload(e)} />
- 
-        <input type="submit" value="Submit" />
-      </form>
-
-      <button onClick={deleteParty}>Delete party</button>
-    </div>
+            </form>
+            
+        </div>
   );
 }
  

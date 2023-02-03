@@ -1,15 +1,9 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";                     // <== IMPORT 
 import { AuthContext } from "../context/auth.context"; 
- 
+// import homePageImg from '../assets/app.find.png'; 
 import { useState, useEffect } from "react";
-import {
-  Navbar,
-  MobileNav,
-  Typography,
-  Button,
-  IconButton,
-} from "@material-tailwind/react";
+import { Navbar, MobileNav, Typography, Button, IconButton} from "@material-tailwind/react";
 
 function NavBar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
@@ -28,14 +22,14 @@ function NavBar() {
     {isLoggedIn && (
       <>
       
-    {user && <span className="text-sky-200">Welcome back {user.name}</span>}
+    {user && <Typography className="font-link font-bold hover:text-blue-700 flex items-center">Welcome back {user.name}</Typography>}
       <Typography
         as="li"
         variant="small"
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link to="/profile" className="flex items-center">
+        <Link to="/profile" className="font-link font-bold hover:text-blue-700 flex items-center">
           Profile
         </Link>
       </Typography>
@@ -45,7 +39,7 @@ function NavBar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link to="/party" className="flex items-center">
+        <Link to="/party" className="font-link font-bold hover:text-blue-700 flex items-center">
           Parties
         </Link>
       </Typography>
@@ -55,11 +49,21 @@ function NavBar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link to="/club" className="flex items-center">
+        <Link to="/club" className="font-link font-bold hover:text-blue-700 flex items-center">
           Clubs
         </Link>
       </Typography>
-
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-normal"
+      >
+        <Link to="/" onClick={logOutUser} className="font-link font-bold hover:text-blue-700 flex items-center">
+          Logout
+        </Link>
+      </Typography>
+      
       </>
       )}
       {!isLoggedIn && (
@@ -70,7 +74,7 @@ function NavBar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link to="/signup" className="flex items-center">
+        <Link to="/signup" className="font-link font-bold hover:text-blue-700 flex items-center">
           Sign Up
         </Link>
       </Typography>
@@ -80,7 +84,7 @@ function NavBar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link to="/login" className="flex items-center">
+        <Link to="/login" className="font-link font-bold hover:text-blue-700 flex items-center">
           Login
         </Link>
       </Typography>
@@ -100,18 +104,19 @@ function NavBar() {
           variant="small"
           className="mr-4 cursor-pointer py-1.5 font-normal"
         >
-          <span>Home</span>
-          
+          <span></span>
+          {/* <img className="h-5 mx-auto rounded-md" src={homePageImg} alt={"home-page"}/> */}
         </Typography>
         
         <div className="hidden lg:block">{navList}</div>
-        
-        <Button onClick={logOutUser} variant="gradient" size="sm" className="hidden lg:inline-block ">
-          <span>Logout</span>
+        <Link to="/" >
+        <Button variant="gradient" size="sm" className="hidden lg:inline-block ">
+          <span>Home</span>
         </Button>
+        </Link>
         <IconButton
           variant="text"
-          className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+          className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent  lg:hidden"
           ripple={false}
           onClick={() => setOpenNav(!openNav)}>
         
@@ -150,9 +155,11 @@ function NavBar() {
       <MobileNav open={openNav}>
         <div className="container mx-auto">
           {navList}
-          <Button onClick={logOutUser} variant="gradient" size="sm" fullWidth className="mb-2">
-            <span>Logout</span>
+          <Link to="/" >
+          <Button  variant="gradient" size="sm" fullWidth className="from-blue-200 to-blue-400 mb-2">
+            <span>Home</span>
           </Button>
+          </Link>
         </div>
       </MobileNav>
     </Navbar>

@@ -6,8 +6,16 @@ import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 import partyPlaceholder from "../assets/default-avatar.png"
 
-const API_URL = "http://localhost:5005";
-// const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
+import {
+    Card,
+    CardHeader,
+    CardBody,
+    CardFooter,
+    Typography,
+  } from "@material-tailwind/react";
+
+const API_URL = "https://bcn-party.cyclic.app";
+// const API_URL = process.env.REACT_APP_API_URL || "https://bcn-party.cyclic.app";
 
 const PartyCard = (props) => {
     const {name, club, date, musicGenre, image, attendees, owner, _id, getAllParties} = props;
@@ -45,14 +53,30 @@ const PartyCard = (props) => {
     }
     
     return (
-        <div className="PartyCard" key={_id}>
-            <h3>{name}</h3>
-            <h4>Location: {club.name}</h4>
+
+        <Card className="w-96">
+      <CardHeader color="blue" className="relative h-56">
+        <img
+          src={image}
+          alt={image}
+          className="h-full w-full"
+        />
+      </CardHeader>
+      <CardBody className="text-center">
+        <Typography variant="h5" className="mb-2">
+          {name}
+        </Typography>
+        <Typography>
+            
             <img src={image !== "" ? image : partyPlaceholder} alt="partyImage" />
             <p>Date: {date}</p>
             <p>Music genre: {musicGenre}</p>
             <p>Party host: {owner.name}</p>
-            <h5>Attendees: <span>{attendees.length}</span></h5>
+        </Typography>
+      </CardBody>
+      <CardFooter divider className="flex items-center justify-between py-3">
+        <Typography variant="small">
+        <h5>Attendees: <span>{attendees.length}</span></h5>
             {attendees.length > 0 && 
             <ul>
             {attendees.map((attendee) => {
@@ -85,7 +109,17 @@ const PartyCard = (props) => {
                 </>
             }
 
-        </div>
+        
+        </Typography>
+        <Typography variant="small" color="gray" className="flex gap-1">
+          <i className="fas fa-map-marker-alt fa-sm mt-[3px]" />
+          <h4>Location: {club.name}</h4>
+        </Typography>
+      </CardFooter>
+    </Card>
+
+
+        
     );
 }
  

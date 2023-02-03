@@ -1,12 +1,12 @@
 import axios from "axios";
 
-// const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
+// const API_URL = process.env.REACT_APP_API_URL || "https://bcn-party.cyclic.app";
  
 const api = axios.create({
     
   // make sure you use PORT = 5005 (the port where our server is running)
-  baseURL:  "http://localhost:5005"
-  //baseURL: process.env.REACT_APP_API_URL || "http://localhost:5005"
+  baseURL:  "https://bcn-party.cyclic.app"
+  //baseURL: process.env.REACT_APP_API_URL || "https://bcn-party.cyclic.app"
   // withCredentials: true // => you might need this option if using cookies and sessions
 });
 

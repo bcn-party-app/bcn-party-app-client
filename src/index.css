@@ -2,6 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+/* colors 
+pink
+#B69DCC
+#C57FDA
+
+blue
+#A0BEE5
+#4BA1FE
+
+rose
+#E5A0B3
+#F9748F
+
+slogan
+#909090
+
+background
+#141414
+*/
+.font-link {
+font-family: 'Montserrat', sans-serif;
+}
+
+.home-page-img{
+  width: 50vw;
+}
+.slogan {
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  width: 50vw;
+}
 .login-form, .signup-form, .home-page, .addclub-form, .addparty-form {
     display: flex;
     flex-direction: column;
@@ -9,11 +41,11 @@
 }
 body {
   margin: 0 auto;
-  background-color: none;
+  background-color: #ececec;
 }
 
 h1, h2 {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Montserrat', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   
 }
 
@@ -32,7 +64,7 @@ h2 {
 
 p {
   width: 150px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Montserrat','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 12px;
   font-weight: 100;
 }
@@ -104,11 +136,6 @@ input {
   flex-direction: column;
   align-items: center;
   /* margin-left: 48px; */
-}
-
-.logOutButton {
-  color: red;
-  background-color: none;
 }
 
 .club-card {

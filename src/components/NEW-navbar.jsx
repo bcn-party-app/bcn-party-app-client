@@ -156,3 +156,45 @@ function Navbar() {
 }
  
 export default Navbar;
+
+<div className="PartyCard" key={_id}>
+            <h3>{name}</h3>
+            <h4>Location: {club.name}</h4>
+            <img src={image !== "" ? image : partyPlaceholder} alt="partyImage" />
+            <p>Date: {date}</p>
+            <p>Music genre: {musicGenre}</p>
+            <p>Party host: {owner.name}</p>
+            <h5>Attendees: <span>{attendees.length}</span></h5>
+            {attendees.length > 0 && 
+            <ul>
+            {attendees.map((attendee) => {
+                return (
+                    <div className="Attendee" key={attendee._id}>
+                        <li>{attendee.name}
+                            <img src={attendee.image} alt="userImage" />
+                        </li>
+                    </div>
+                )
+            })}
+            </ul>}
+            
+            {/* this button needs to toggle between attend/don't attend and needs to make a call to the routes in the backend*/}
+{/*  */}
+
+            {attendees.includes(user._id) ? <button onClick={leaveParty}>Cancel attendance</button> : <button onClick={attendParty}>Attend</button>}
+
+
+
+            {/* the edit/delete buttons below need to be rendered only if current user is the user who created that party, and then make a request to the specific API  */}
+            {   
+                user._id === owner._id &&
+                <>
+                <Link to={`/party/${partyId}/edit`}>
+                    <button>Edit this party</button>
+                </Link>
+
+                <button onClick={deleteParty}>Delete this party</button>
+                </>
+            }
+
+        </div>

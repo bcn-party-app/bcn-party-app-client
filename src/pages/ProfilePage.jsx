@@ -5,19 +5,18 @@ import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import avatarImage from '../assets/default-avatar.png';
 import {
-    Navbar,
-    MobileNav,
+    
     Typography,
     Button,
-    IconButton,
+    
     Card,
     CardHeader,
     CardBody,
     CardFooter,
     Tooltip,} from "@material-tailwind/react";
 
-const API_URL = "http://localhost:5005";
-//const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
+const API_URL = "https://bcn-party.cyclic.app";
+//const API_URL = process.env.REACT_APP_API_URL || "https://bcn-party.cyclic.app";
 
 const ProfilePage = props => {
     const [showUpload, setShowUpload] = useState(false);
@@ -63,14 +62,14 @@ const ProfilePage = props => {
                     <img src={avatarImage} alt={"profile_image"} style={{width: '100px', height: '100px',  borderRadius: '75%'}} />
                     }
                     {!showUpload &&
-                    <Button className="w-80 rounded-lg px-4 py-2 bg-gradient-to-tr from-blue-600 to-blue-400 hover:text-white" onClick={()=> setShowUpload(!showUpload)}>Edit Photo</Button>
+                    <button className="w-80 rounded-lg px-4 py-2 bg-gradient-to-tr from-blue-600 to-blue-400 text-white" onClick={()=> setShowUpload(!showUpload)}>Edit Photo</button>
                     }
                 </div> 
                 <div>
                 {showUpload && 
                         (<form onSubmit={handleSubmit} className="rounded-lg px-4 py-2 bg-gradient-to-tr">
                             <input className="rounded-lg px-4 py-2 bg-gradient-to-tr" type="file" onChange={(e) => handleFileUpload(e)} />
-                            <Button className="rounded-lg px-4 py-2 bg-gradient-to-tr from-blue-600 to-blue-400 hover:text-white" type="submit">Save new profile image</Button>
+                            <button className="rounded-lg px-4 py-2 bg-gradient-to-tr from-blue-600 to-blue-400 text-white" type="submit">Save new profile image</button>
                             </form>)
                     }
                 </div> 

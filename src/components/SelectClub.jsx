@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Input, Select, Option } from "@material-tailwind/react";
 
-const API_URL = "http://localhost:5005";
-//const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
+const API_URL = "https://bcn-party.cyclic.app";
+//const API_URL = process.env.REACT_APP_API_URL || "https://bcn-party.cyclic.app";
 
 function SelectClub(props) {
   const [clubs, setClubs] = useState([]);
@@ -24,9 +25,9 @@ function SelectClub(props) {
 
 
     return (
-      <div className="px-8 py-3">
-      <label className="pr-2">Club:</label>
-      <select className="rounded-md px-8 py-2 " value={props.club} onChange={(e)=>props.setClub(e.target.value)}>
+      <div className="flex flex-col w-72 gap-6">
+      
+      <select label="Club" className="" value={props.club} onChange={(e)=>props.setClub(e.target.value)}>
       {clubs.map(club => (
         <option className="" key={club._id} value={club._id}>
           {club.name}

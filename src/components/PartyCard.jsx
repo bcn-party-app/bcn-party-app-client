@@ -55,6 +55,7 @@ const PartyCard = (props) => {
     
     return (
 
+
     <Card className="w-96 party-card">
       <CardHeader color="gray" className="card-header relative h-15">
         <img
@@ -109,6 +110,7 @@ const PartyCard = (props) => {
 
 
         
+
     );
 }
  

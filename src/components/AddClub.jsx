@@ -1,10 +1,10 @@
 import { useState } from "react";
-import service from "../service/auth.service";
+// import service from "../service/auth.service";
 import axios from "axios";
-import { Input } from "@material-tailwind/react";
+import { Input, Button } from "@material-tailwind/react";
  
-const API_URL = "http://localhost:5005";
-//const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
+const API_URL = "https://bcn-party.cyclic.app";
+//const API_URL = process.env.REACT_APP_API_URL || "https://bcn-party.cyclic.app";
  
 function AddClub(props) {
   const [name, setName] = useState("");
@@ -37,7 +37,7 @@ function AddClub(props) {
           .then(response => {
             // console.log("response is: ", response);
             // response carries "fileUrl" which we can use to update the state
-            setImage(response.data.image);
+            setImage(response.data.fileUrl);
           })
           .catch(err => console.log("Error while uploading the file: ", err));
       };
@@ -48,7 +48,7 @@ function AddClub(props) {
     // Grab the state variable values
     // Add a new club
     const newClub = { name, streetName, streetNumber, image }
-    // Add that club to the DB ==> send a POST request to 'http://localhost:5005/api/clubs'
+    // Add that club to the DB ==> send a POST request to 'https://bcn-party.cyclic.app/api/clubs'
     axios.post(`${API_URL}/api/club`, newClub, { headers: { Authorization: `Bearer ${storedToken}` } })
     .then((response) => {
         // Reset the state
@@ -76,11 +76,11 @@ function AddClub(props) {
                     <Input  label="Street Number"
                     type="number" name="streetNumber" value={streetNumber}  onChange={(e) => setStreetNumber(e.target.value)} />
                     
-                    <Input label="Image"
+                    <input label="Image"
                     type="file" onChange={(e) => handleFileUpload(e)} />
 
-                    <button className="w-72 rounded-lg px-4 py-2 bg-gradient-to-tr from-blue-600 to-blue-400 hover:text-white" 
-                    type="submit"><b>Add New Club</b></button>
+                    <Button className="w-72 rounded-lg px-4 py-2 bg-gradient-to-tr from-blue-200 to-blue-400 hover:text-white" 
+                    type="submit"><b>Add New Club</b></Button>
                     
                 </div>
 

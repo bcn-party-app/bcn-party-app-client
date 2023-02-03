@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 // import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import authMethods from "../service/auth.service";
-import { Input } from "@material-tailwind/react";
+import { Input, Button } from "@material-tailwind/react";
 
 const LoginPage = () => {
     const [user, setUser] = useState({email: '', password: ''});
@@ -45,13 +45,13 @@ const LoginPage = () => {
                     type="password" name="password" value={user.password}  onChange={handleChange} />
                     <br />
 
-                    <button className="w-72 rounded-lg px-4 py-2 bg-gradient-to-tr from-blue-600 to-blue-400 hover:text-white" 
-                    type="submit"><b>Login</b></button>
+                    <Button className="w-72 rounded-lg px-4 py-2 bg-gradient-to-tr from-blue-200 to-blue-400" 
+                    type="submit"><b>Login</b></Button>
                     
                 </div>
 
             </form>
-            <p className="w-72 text-center pt-5" >Don't have an account yet? <br/> You can create your account <br/> <Link className="text-blue-400" to={'/signup'}>here</Link> </p>
+            <p className="w-72 text-center pt-5 font-bold" >Don't have an account yet? <br/> You can create your account <br/> <Link className="text-blue-600 font-bold" to={'/signup'}>here</Link> </p>
         </div>
     
 

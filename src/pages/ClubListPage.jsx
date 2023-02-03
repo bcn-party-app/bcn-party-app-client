@@ -3,8 +3,8 @@ import axios from "axios";
 import AddClub from "../components/AddClub";
 import ClubCard from "../components/ClubCard";
  
-const API_URL = "http://localhost:5005";
-//const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
+const API_URL = "https://bcn-party.cyclic.app";
+//const API_URL = process.env.REACT_APP_API_URL || "https://bcn-party.cyclic.app";
 //  console.log(process.env.REACT_APP_API_URL)
  
 function ClubListPage() {

@@ -2,7 +2,7 @@ import { useState } from "react";
 // import axios from 'axios';
 import { useNavigate, Link } from "react-router-dom";
 import authMethods from "../service/auth.service"
-import { Input } from "@material-tailwind/react";
+import { Input, Button } from "@material-tailwind/react";
 
 const SignUpPage = () => {
     const [user, setUser] = useState({name: '', email: '', password: ''});
@@ -28,19 +28,19 @@ const SignUpPage = () => {
             <form onSubmit={handleSubmit} className="pt-20 flex-auto">
                 <div className="flex flex-col w-72 gap-6">
                      
-                    <Input variant="Name" label="Name"
+                    <Input label="Name"
                     type="text" name="name" value={user.name} onChange={handleChange} />
                     
-                    <Input variant="Email" label="Email"
+                    <Input label="Email"
                     type="text" name="email" value={user.email} onChange={handleChange} />
                     
                     
-                    <Input variant="Password" label="Password"
+                    <Input label="Password"
                     type="password" name="password" value={user.password}  onChange={handleChange} />
                     <br />
 
-                    <button className="w-72 rounded-lg px-4 py-2 bg-gradient-to-tr from-blue-600 to-blue-400 hover:text-white" 
-                    type="submit"><b>Sign Up</b></button>
+                    <Button className="w-72 rounded-lg px-4 py-2 bg-gradient-to-tr from-blue-200 to-blue-400 " 
+                    type="submit"><b>Sign Up</b></Button>
                     
                 </div>
 
